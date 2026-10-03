@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 62054",
     "build": "vue-tsc --noEmit && vite build",
+    "test:collab": "esbuild src/collab/__tests__/engine.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/collab-test.mjs && esbuild src/collab/__tests__/scenario.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/collab-scenario.mjs && node node_modules/.cache/collab-test.mjs && node node_modules/.cache/collab-scenario.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 62054"
   },
   "dependencies": {

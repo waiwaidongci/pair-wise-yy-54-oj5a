@@ -60,7 +60,7 @@ watch(layers, () => {
       <a-form layout="vertical" :model="store.selectedStage || {}">
         <a-form-item label="车道占用"><a-input :model-value="store.selectedStage?.lanes" @change="(value: string) => store.updateStage({ lanes: value })" /></a-form-item>
         <a-form-item label="阶段名称"><a-input :model-value="store.selectedStage?.name" @change="(value: string) => store.updateStage({ name: value })" /></a-form-item>
-        <div class="two"><a-form-item label="开始"><a-date-picker :model-value="store.selectedStage?.start" @change="(value: any) => store.updateStage({ start: value })" /></a-form-item><a-form-item label="结束"><a-date-picker :model-value="store.selectedStage?.end" @change="(value: any) => store.updateStage({ end: value })" /></a-form-item></div>
+        <div class="two"><a-form-item label="开始"><a-date-picker value-format="YYYY-MM-DD" :model-value="store.selectedStage?.start" @change="(value: string) => store.updateStage({ start: value })" /></a-form-item><a-form-item label="结束"><a-date-picker value-format="YYYY-MM-DD" :model-value="store.selectedStage?.end" @change="(value: string) => store.updateStage({ end: value })" /></a-form-item></div>
       </a-form>
       <h3>绕行比较</h3>
       <div v-for="route in store.scheme.detours" :key="route.id" class="detour"><div><b>{{ route.name }}</b><small>{{ route.distance }} km · 增加 {{ route.extraMinutes }} 分钟</small></div><a-tag :color="route.extraMinutes > 10 ? 'orange' : 'green'">{{ route.extraMinutes > 10 ? '关注' : '可用' }}</a-tag></div>

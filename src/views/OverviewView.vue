@@ -9,8 +9,8 @@ const { result, loading, error } = useQuery(SCHEME_QUERY)
 const stats = computed(() => [
   { label: '施工阶段', value: store.scheme.stages.length, note: '跨 42 天' },
   { label: '生效冲突', value: store.conflicts.filter((item) => item.level === '高').length, note: '需阶段审批前解决' },
-  { label: '待处理条件', value: store.scheme.comments.filter((item) => item.status === '待处理').length, note: '公交单位尚有 1 条' },
-  { label: '方案版本', value: `v${result.value?.scheme?.version ?? store.scheme.version}`, note: '每次几何修改留痕' },
+  { label: '待处理 / 复核', value: store.pendingReviewCount, note: store.hasOpenConflict ? `${store.openDrafts.length} 份冲突草稿待合并` : '意见锚定版本，变化自动重算' },
+  { label: '主线版本', value: `v${store.headVersion}`, note: `提交号留痕 · ${store.commits.length} 次保存` },
 ])
 </script>
 
